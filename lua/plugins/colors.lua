@@ -21,9 +21,4 @@ return {
     name = 'catppuccin',
     lazy = true,
   },
-  {
-    'olivercederborg/poimandres.nvim',
-    lazy = false,
-    priority = 1000,
-  },
 }
