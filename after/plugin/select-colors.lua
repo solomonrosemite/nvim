@@ -16,4 +16,4 @@ local function set()
 end
 
 vim.g.custom_colorscheme_set = set
-vim.g.custom_colorscheme_transparent = false
+vim.g.custom_colorscheme_transparent = true
