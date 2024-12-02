@@ -5,6 +5,7 @@ local function set()
 
   -- vim.cmd 'colorscheme tokyonight-night'
   -- vim.cmd 'colorscheme oxocarbon'
+  -- vim.cmd 'colorscheme vscode'
   vim.cmd 'colorscheme catppuccin-mocha'
   -- vim.cmd 'colorscheme rose-pine'
   -- require('onedark').load()

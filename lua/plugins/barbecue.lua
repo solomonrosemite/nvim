@@ -1,6 +1,7 @@
 return {
   'utilyre/barbecue.nvim',
   name = 'barbecue',
+  cond = vim.g.vscode == nil,
   version = '*',
   dependencies = {
     'SmiteshP/nvim-navic',

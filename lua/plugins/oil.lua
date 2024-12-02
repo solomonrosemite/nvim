@@ -1,6 +1,7 @@
 return {
   'stevearc/oil.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
+  cond = vim.g.vscode == nil,
   config = function()
     require('oil').setup {
       -- mandatory since when enabled and "git add -p" by git fugitive is used, the spit does not close.

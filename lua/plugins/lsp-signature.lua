@@ -1,5 +1,6 @@
 return {
   'ray-x/lsp_signature.nvim',
+  cond = vim.g.vscode == nil,
   event = 'VeryLazy',
   opts = {
     hint_enable = false,

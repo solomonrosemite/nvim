@@ -21,4 +21,8 @@ return {
     name = 'catppuccin',
     lazy = true,
   },
+  {
+    'Mofiqul/vscode.nvim',
+    lazy = true,
+  },
 }
