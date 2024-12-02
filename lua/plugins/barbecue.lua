@@ -10,6 +10,9 @@ return {
   config = function()
     require('barbecue').setup {
       include_buftypes = { 'oil', 'acwrite', '' },
+      modifiers = {
+        dirname = ':p:~',
+      },
     }
   end,
 }
