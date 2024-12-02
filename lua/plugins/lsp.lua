@@ -13,6 +13,22 @@ return { -- LSP Configuration & Plugins
   },
   config = function()
     vim.api.nvim_create_autocmd('LspAttach', {
+      group = vim.api.nvim_create_augroup('disable-diagnostics-on-special-files', { clear = true }),
+      callback = function(event)
+        local buffer = event.buf
+        local lines = vim.api.nvim_buf_get_lines(buffer, 0, -1, false)
+        local content = table.concat(lines, '\n')
+
+        -- If the file contains "DO NOT EDIT", disable diagnostics
+        if content:find 'DO NOT EDIT' then
+          vim.diagnostic.disable(buffer)
+        else
+          vim.diagnostic.enable(buffer)
+        end
+      end,
+    })
+
+    vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
       callback = function(event)
         local map = function(keys, func, desc)
@@ -25,11 +41,6 @@ return { -- LSP Configuration & Plugins
         -- Jump to the implementation of the word under your cursor.
         --  Useful when your language has ways of declaring types without an actual implementation.
         map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-
-        -- Jump to the type of the word under your cursor.
-        --  Useful when you're not sure what type a variable is and you want to see
-        --  the definition of its *type*, not where it was *defined*.
-        map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
 
         -- Fuzzy find all the symbols in your current document.
         --  Symbols are things like variables, functions, types, etc.
@@ -44,12 +55,16 @@ return { -- LSP Configuration & Plugins
         map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
         map('gh', vim.lsp.buf.hover, 'Hover Documentation')
-        map('K', vim.diagnostic.open_float, 'Show Diagnostic')
+        map('<leader>k', vim.diagnostic.open_float, 'Show Diagnostic')
         map('gi', vim.lsp.buf.implementation, '[G]oto [i]mplementation')
 
         -- WARN: This is not Goto Definition, this is Goto Declaration.
         --  For example, in C this would take you to the header
         map('gtd', vim.lsp.buf.declaration, '[G]oto [t]ype [d]eclaration')
+
+        -- Jump to the type of the word under your cursor.
+        --  Useful when you're not sure what type a variable is and you want to see
+        --  the definition of its *type*, not where it was *defined*.
         map('gD', vim.lsp.buf.type_definition, '[G]oto Type [D]efinition')
 
         map('<F2>', vim.lsp.buf.rename, 'Rename')

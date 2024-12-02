@@ -36,6 +36,10 @@ vim.keymap.set('n', 'J', '<C-w>j')
 vim.keymap.set('n', '<C-Right>', '<C-w>><C-w>>')
 vim.keymap.set('n', '<C-Left>', '<C-w><<C-w><')
 
+-- To to previous buffer and next buffer
+vim.keymap.set('n', '<C-h>', ':bprevious<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-l>', ':bnext<CR>', { noremap = true, silent = true })
+
 if vim.g.vscode == nil then
   vim.keymap.set('n', '<C-q>', ':q<CR>')
 end
