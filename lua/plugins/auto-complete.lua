@@ -31,12 +31,31 @@ return {
     -- 'rafamadriz/friendly-snippets',
   },
   config = function()
-    -- See `:help cmp`
+    local lspkind = require 'lspkind'
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
     luasnip.config.setup {}
 
     cmp.setup {
+      formatting = {
+        format = lspkind.cmp_format {
+          symbol_map = {
+            Snippet = '',
+          },
+          mode = 'symbol_text',
+          preset = 'codicons',
+          -- maxwidth = {
+          --   menu = 50,
+          --   abbr = 50,
+          -- },
+          ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+          show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+
+          before = function(_, vim_item)
+            return vim_item
+          end,
+        },
+      },
       snippet = {
         expand = function(args)
           luasnip.lsp_expand(args.body)
