@@ -55,7 +55,7 @@ return { -- LSP Configuration & Plugins
         map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
         map('gh', vim.lsp.buf.hover, 'Hover Documentation')
-        map('<leader>k', vim.diagnostic.open_float, 'Show Diagnostic')
+        map('<leader>e', vim.diagnostic.open_float, 'Show Diagnostic')
         map('gi', vim.lsp.buf.implementation, '[G]oto [i]mplementation')
 
         -- WARN: This is not Goto Definition, this is Goto Declaration.

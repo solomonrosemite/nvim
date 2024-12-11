@@ -24,8 +24,8 @@ vim.keymap.set('n', ';', ',')
 
 -- Stop Vim from yanking visual selected text
 vim.keymap.set('x', 'p', 'P')
-vim.keymap.set('n', '<leader>p', '"0p')
-vim.keymap.set('n', '<leader>P', '"0P')
+-- vim.keymap.set('n', '<leader>p', '"0p')
+-- vim.keymap.set('n', '<leader>P', '"0P')
 
 vim.keymap.set('n', 'H', '<C-w>h')
 vim.keymap.set('n', 'L', '<C-w>l')

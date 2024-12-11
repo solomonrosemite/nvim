@@ -116,8 +116,8 @@ return {
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
-    vim.keymap.set('n', '<C-p>', builtin.find_files)
-    vim.keymap.set('n', '<C-k>', builtin.live_grep)
+    vim.keymap.set('n', '<leader>p', builtin.find_files)
+    vim.keymap.set('n', '<leader>k', builtin.live_grep)
     vim.keymap.set('n', '<leader>m', builtin.marks)
     vim.keymap.set('n', '<leader>hh', builtin.help_tags, { desc = 'Search Help' })
     vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
