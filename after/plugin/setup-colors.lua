@@ -7,7 +7,9 @@ require('catppuccin').setup {
 
 require('onedark').setup {
   transparent = transparent,
-  style = 'darker',
+  -- style = 'light',
+  -- style = 'darker',
+  style = 'warmer',
   lualine = {
     transparent = transparent,
   },
@@ -15,6 +17,10 @@ require('onedark').setup {
 
 require('tokyonight').setup {
   transparent = transparent,
+}
+
+require('visual_studio_code').setup {
+  mode = 'light',
 }
 
 set_colors()

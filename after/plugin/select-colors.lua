@@ -6,11 +6,13 @@ local function set()
   -- vim.cmd 'colorscheme tokyonight-night'
   -- vim.cmd 'colorscheme oxocarbon'
   -- vim.cmd 'colorscheme vscode'
-  vim.cmd 'colorscheme catppuccin-mocha'
+  -- vim.cmd 'colorscheme catppuccin-mocha'
   -- vim.cmd 'colorscheme rose-pine'
-  -- require('onedark').load()
+  -- vim.cmd 'colorscheme arctic' -- better vs code dark+ theme
+  require('onedark').load()
 
-  -- you may choose one of the 2 flashbangs
+  -- you may choose one of the 3 flashbangs
+  -- vim.cmd 'colorscheme visual_studio_code'
   -- vim.cmd 'colorscheme tokyonight-day'
   -- vim.cmd 'colorscheme catppuccin-latte'
 end

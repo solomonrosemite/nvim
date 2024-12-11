@@ -25,4 +25,14 @@ return {
     'Mofiqul/vscode.nvim',
     lazy = true,
   },
+  {
+    'rockyzhang24/arctic.nvim',
+    branch = 'v2',
+    dependencies = { 'rktjmp/lush.nvim' },
+    lazy = true,
+  },
+  {
+    'askfiy/visual_studio_code',
+    lazy = true,
+  },
 }
