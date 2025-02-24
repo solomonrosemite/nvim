@@ -3,6 +3,10 @@ local set_colors = vim.g.custom_colorscheme_set
 
 require('catppuccin').setup {
   transparent_background = transparent,
+  background = {
+    light = 'latte',
+    dark = 'mocha',
+  },
 }
 
 require('onedark').setup {
@@ -17,10 +21,8 @@ require('onedark').setup {
 
 require('tokyonight').setup {
   transparent = transparent,
-}
-
-require('visual_studio_code').setup {
-  mode = 'light',
+  style = 'moon',
+  light_style = 'day',
 }
 
 set_colors()
