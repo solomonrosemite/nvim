@@ -16,6 +16,9 @@ return {
         return 'make install_jsregexp'
       end)(),
     },
+    {
+      'onsails/lspkind.nvim',
+    },
     'saadparwaiz1/cmp_luasnip',
 
     -- Adds other completion capabilities.
@@ -68,10 +71,8 @@ return {
       --
       -- No, but seriously. Please read `:help ins-completion`, it is really good!
       mapping = cmp.mapping.preset.insert {
-        -- Select the [n]ext item
-        ['<C-n>'] = cmp.mapping.select_next_item(),
-        -- Select the [p]revious item
-        ['<C-p>'] = cmp.mapping.select_prev_item(),
+        ['<C-d>'] = cmp.mapping.select_next_item(),
+        ['<C-u>'] = cmp.mapping.select_prev_item(),
 
         -- Accept ([y]es) the completion.
         --  This will auto-import if your LSP supports it.

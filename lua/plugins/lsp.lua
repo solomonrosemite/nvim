@@ -20,7 +20,7 @@ return { -- LSP Configuration & Plugins
         local content = table.concat(lines, '\n')
 
         -- If the file contains "DO NOT EDIT", disable diagnostics
-        if content:find 'DO NOT EDIT' then
+        if string.upper(content):find 'DO NOT EDIT' then
           vim.diagnostic.disable(buffer)
         else
           vim.diagnostic.enable(buffer)
@@ -52,7 +52,12 @@ return { -- LSP Configuration & Plugins
 
         -- Execute a code action, usually your cursor needs to be on top of an error
         -- or a suggestion from your LSP for this to activate.
-        map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+        -- map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+        map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+        -- :lua require'telescope.builtin'.code_action{ on_complete = { function() vim.cmd"stopinsert" end } }
+        map('<leader>ca', function()
+          vim.lsp.buf.code_action()
+        end, '[C]ode [A]ction')
 
         map('gh', vim.lsp.buf.hover, 'Hover Documentation')
         map('<leader>e', vim.diagnostic.open_float, 'Show Diagnostic')
@@ -126,6 +131,9 @@ return { -- LSP Configuration & Plugins
       shellcheck = {},
       tailwindcss = {},
       ts_ls = {},
+      emmet_ls = {
+        filetypes = { 'typescriptreact' },
+      },
       -- golangci_lint_ls = {
       --   filetypes = { 'go', 'gomod' },
       --   init_options = {
