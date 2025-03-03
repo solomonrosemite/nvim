@@ -1,5 +1,10 @@
 return {
   'tpope/vim-fugitive',
+  commit = 'b068eaf1e6cbe35d1ac100d435cd7f7b74a5c87d',
+  dependencies = {
+    'shumphrey/fugitive-gitlab.vim',
+    'tpope/vim-rhubarb',
+  },
   config = function()
     vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
     vim.keymap.set('n', '<leader>gap', ':Git add -p<CR>', { noremap = true, silent = true })

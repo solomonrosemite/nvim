@@ -11,6 +11,34 @@ return {
   end,
   opts = {
     hints = { enabled = true },
+    provider = 'openrouter', -- or "copilot", "gemini", "ollama", "openrouter"
+    vendors = {
+      openrouter = {
+        __inherited_from = 'openai',
+        endpoint = 'https://openrouter.ai/api/v1',
+        api_key_name = 'OPENROUTER_API_KEY',
+        model = 'anthropic/claude-3.7-sonnet',
+        max_tokens = 8192,
+      },
+    },
+    behaviour = {
+      auto_suggestions = false,
+      auto_set_highlight_group = true,
+      auto_set_keymaps = true,
+      auto_apply_diff_after_generation = false,
+      support_paste_from_clipboard = true,
+      minimize_diff = false,
+    },
+    copilot = {
+      model = 'claude-3.7-sonnet', -- or "gpt-4o"
+      temperature = 0,
+      max_tokens = 8192,
+    },
+    gemini = {
+      model = 'gemini-2.0-flash', -- or "gemini-1.5-pro", "gemini-2.0-flash-exp", "gemini-exp-1206", "gemini-1.5-flash", "gemini-2.0-flash-exp", "gemini-2.0-flash-thinking-exp-01-21"
+      temperature = 0,
+      max_tokens = 8192,
+    },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = 'make',
