@@ -1,6 +1,7 @@
 return {
   {
     'f-person/auto-dark-mode.nvim',
+    cond = os.getenv 'SSH_CLIENT' == nil,
     priority = 99999,
     lazy = false,
     -- workaround for https://github.com/f-person/auto-dark-mode.nvim/issues/17
