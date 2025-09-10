@@ -14,7 +14,8 @@ return {
     vim.keymap.set('n', '<leader>gcc', ':Git commit<CR>', { noremap = true, silent = true })
     vim.keymap.set('n', '<leader>gb', ':Git blame<CR>', { noremap = true, silent = true })
     vim.keymap.set('n', '<leader>gl', ':Git log<CR>', { noremap = true, silent = true })
-    vim.keymap.set('n', '<leader>gp', ':Git push<CR>', { noremap = true, silent = true })
+    vim.keymap.set('n', '<leader>gpl', ':Git pull<CR>', { noremap = true, silent = true })
+    vim.keymap.set('n', '<leader>gph', ':Git push<CR>', { noremap = true, silent = true })
     vim.keymap.set('n', '<leader>gtp', ':!~/.dotfiles/scripts/.config/scripts/increment_tag_push.sh<CR>', { noremap = true, silent = true })
     vim.keymap.set(
       'n',

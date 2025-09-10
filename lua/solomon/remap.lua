@@ -8,13 +8,17 @@ vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true 
 -- https://github.com/neovim/neovim/pull/28650#discussion_r1612295598
 -- alternative to proposed solution: nnoremap <nowait> gr gr
 if vim.g.vscode == nil then
-  -- vim.keymap.del('n', 'grr')
-  -- vim.keymap.del('n', 'gra')
-  -- vim.keymap.del('n', 'grn')
+  vim.keymap.del('n', 'grr')
+  vim.keymap.del('n', 'gra')
+  vim.keymap.del('n', 'grn')
 end
 
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-k>', '<C-u>zz')
+vim.keymap.set('n', '<C-j>', '<C-d>zz')
+vim.keymap.set('n', '<Down>', '<C-d>zz')
+vim.keymap.set('n', '<Up>', '<C-u>zz')
 
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
@@ -64,22 +68,6 @@ function YankCommentAndPasteAbove()
 end
 vim.api.nvim_set_keymap('x', '<Leader>a', [[:<C-u>execute "'<,'>y | lua YankCommentAndPasteAbove()"<CR>]], { noremap = true })
 
--- Copy to clipboard from WSL
--- Source: https://vi.stackexchange.com/questions/42305/neovim-following-the-instructions-in-h-clipboard-wsl-not-work-it-shows-no
-vim.keymap.set('v', '<C-c>', '"+y')
-vim.g.clipboard = {
-  name = 'WslClipboard',
-  copy = {
-    ['+'] = 'utf8clip.exe',
-    ['*'] = 'utf8clip.exe',
-  },
-  paste = {
-    ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-    ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-  },
-  cache_enabled = 0,
-}
-
 -- Use lowercase for global marks and uppercase for local marks.
 -- https://stackoverflow.com/a/77404322/13024474
 local low = function(i)
@@ -101,3 +89,42 @@ end
 for i = 0, 25 do
   vim.keymap.set('n', "'" .. upp(i), "'" .. low(i))
 end
+
+vim.opt.clipboard:append 'unnamedplus'
+
+-- local is_wsl = vim.fn.system('uname -a'):find 'Microsoft' ~= nil
+-- if is_wsl then
+--   -- Copy to clipboard from WSL
+--   -- Source: https://vi.stackexchange.com/questions/42305/neovim-following-the-instructions-in-h-clipboard-wsl-not-work-it-shows-no
+--   vim.keymap.set('v', '<C-c>', '"+y')
+--   vim.g.clipboard = {
+--     name = 'WslClipboard',
+--     copy = {
+--       ['+'] = 'utf8clip.exe',
+--       ['*'] = 'utf8clip.exe',
+--     },
+--     paste = {
+--       ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+--       ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+--     },
+--     cache_enabled = 0,
+--   }
+-- end
+--
+-- -- Copy to system clipboard with Option+C
+-- vim.keymap.set({ 'n', 'v' }, '<A-c>', '"+y', { desc = 'Copy to system clipboard' })
+--
+-- -- Paste from system clipboard with Option+V
+-- vim.keymap.set({ 'n', 'v' }, '<A-v>', '"+p', { desc = 'Paste from system clipboard' })
+--
+-- vim.keymap.set({ 'n', 'v' }, '<D-c>', '"+y', { desc = 'Copy to system clipboard' })
+-- vim.keymap.set({ 'n', 'v' }, '<D-v>', '"+p', { desc = 'Paste from system clipboard' })
+--
+-- local is_mac = vim.fn.has 'mac' == 1
+-- if is_mac then
+--   -- vim.keymap.set('v', '<D-c>', '"+y')
+--   vim.keymap.set({ 'n', 'v' }, '<D-c>', '"+y', { desc = 'Copy to system clipboard' })
+--   vim.keymap.set({ 'n', 'v' }, '<D-v>', '"+p', { desc = 'Paste from system clipboard' })
+-- else
+--   vim.keymap.set('v', '<C-c>', '"+y')
+-- end

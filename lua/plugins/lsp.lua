@@ -115,8 +115,12 @@ return { -- LSP Configuration & Plugins
       gopls = {},
       html = {},
       jsonls = {},
+      -- python
+      black = {},
+      mypy = {},
+      pylsp = {},
+
       marksman = {},
-      pyright = {},
       rust_analyzer = {},
       svelte = {
         on_attach = function(client, _)

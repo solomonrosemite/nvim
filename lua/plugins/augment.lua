@@ -27,7 +27,6 @@ return {
     end
 
     local workspace_folders = get_workspace_config()
-    print('Setting workspace folders to: ', vim.inspect(workspace_folders))
     vim.g.augment_workspace_folders = workspace_folders
   end,
 }
