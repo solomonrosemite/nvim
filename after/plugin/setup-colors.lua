@@ -21,7 +21,7 @@ require('onedark').setup {
 
 require('tokyonight').setup {
   transparent = transparent,
-  style = 'moon',
+  style = 'night',
   light_style = 'day',
 }
 
