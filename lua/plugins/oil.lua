@@ -2,6 +2,10 @@ return {
   'stevearc/oil.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   cond = vim.g.vscode == nil,
+  ---@module 'oil'
+  ---@type oil.SetupOpts
+  opts = {},
+  lazy = false,
   config = function()
     require('oil').setup {
       -- mandatory since when enabled and "git add -p" by git fugitive is used, the spit does not close.
@@ -38,6 +42,6 @@ return {
       },
     }
 
-    vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+    vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open oil file explorer' })
   end,
 }

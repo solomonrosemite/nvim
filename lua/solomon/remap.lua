@@ -8,9 +8,11 @@ vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true 
 -- https://github.com/neovim/neovim/pull/28650#discussion_r1612295598
 -- alternative to proposed solution: nnoremap <nowait> gr gr
 if vim.g.vscode == nil then
-  vim.keymap.del('n', 'grr')
   vim.keymap.del('n', 'gra')
   vim.keymap.del('n', 'grn')
+  vim.keymap.del('n', 'grt')
+  vim.keymap.del('n', 'gri')
+  vim.keymap.del('n', 'grr')
 end
 
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
