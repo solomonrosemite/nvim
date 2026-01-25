@@ -16,27 +16,27 @@ return {
     vim.o.autoread = true
 
     -- Recommended/example keymaps.
-    vim.keymap.set({ 'n', 'x' }, '<C-a>', function()
+    vim.keymap.set({ 'n', 'x' }, '<leader>oa', function()
       require('opencode').ask('@this: ', { submit = true })
     end, { desc = 'Ask opencode' })
-    vim.keymap.set({ 'n', 'x' }, '<C-x>', function()
+    vim.keymap.set({ 'n', 'x' }, '<leader>ox', function()
       require('opencode').select()
     end, { desc = 'Execute opencode action…' })
-    vim.keymap.set({ 'n', 't' }, '<C-.>', function()
+    vim.keymap.set({ 'n', 't' }, '<leader>o.', function()
       require('opencode').toggle()
     end, { desc = 'Toggle opencode' })
 
-    vim.keymap.set({ 'n', 'x' }, 'go', function()
+    vim.keymap.set({ 'n', 'x' }, '<leader>og', function()
       return require('opencode').operator '@this '
     end, { expr = true, desc = 'Add range to opencode' })
-    vim.keymap.set('n', 'goo', function()
+    vim.keymap.set('n', '<leader>oo', function()
       return require('opencode').operator '@this ' .. '_'
     end, { expr = true, desc = 'Add line to opencode' })
 
-    vim.keymap.set('n', '<S-C-u>', function()
+    vim.keymap.set('n', '<leader>oh', function()
       require('opencode').command 'session.half.page.up'
     end, { desc = 'opencode half page up' })
-    vim.keymap.set('n', '<S-C-d>', function()
+    vim.keymap.set('n', '<leader>od', function()
       require('opencode').command 'session.half.page.down'
     end, { desc = 'opencode half page down' })
 
