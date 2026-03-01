@@ -92,16 +92,22 @@ for i = 0, 25 do
   vim.keymap.set('n', "'" .. upp(i), "'" .. low(i))
 end
 
-vim.opt.clipboard:append 'unnamedplus'
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    -- vim.highlight.on_yank()
-    local copy_to_unnamedplus = require('vim.ui.clipboard.osc52').copy '+'
-    copy_to_unnamedplus(vim.v.event.regcontents)
-    local copy_to_unnamed = require('vim.ui.clipboard.osc52').copy '*'
-    copy_to_unnamed(vim.v.event.regcontents)
-  end,
-})
+local is_ssh = vim.env.SSH_TTY ~= nil or vim.env.SSH_CONNECTION ~= nil or vim.env.SSH_CLIENT ~= nil
+if not is_ssh then
+  vim.opt.clipboard:append 'unnamedplus'
+end
+
+if is_ssh then
+  vim.api.nvim_create_autocmd('TextYankPost', {
+    callback = function()
+      -- vim.highlight.on_yank()
+      local copy_to_unnamedplus = require('vim.ui.clipboard.osc52').copy '+'
+      copy_to_unnamedplus(vim.v.event.regcontents)
+      local copy_to_unnamed = require('vim.ui.clipboard.osc52').copy '*'
+      copy_to_unnamed(vim.v.event.regcontents)
+    end,
+  })
+end
 
 if vim.g.vscode then
   local vscode = require 'vscode'
